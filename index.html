@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elliott Ashby</title>
+	<link rel="icon" href="assets/favicon.svg" type="image/svg">
+    <link rel="stylesheet" href="style.css">
+</head>
+<button id="theme-toggle">🌓</button>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Elliott Ashby</h1>
+        </div>
+		<div class="linker">
+			<span style="display: flex; flex-direction: row; justify-content: center;">
+                <a href="https://github.com/Aethar01" target="_blank">
+                    <span>GitHub</span>
+                </a> |
+                <a href="https://linkedin.com/in/elliott-ashby-292145307" target="_blank">
+                    <span>Linkedin</span>
+                </a>
+            </span>
+			<span>him@elliott-ashby.uk</span>
+		</div>
+        <div class="content">
+        </div>
+		<img class="logo" src="assets/ket_psi.svg" alt="Ket Psi" width="100">
+    </div>
+</body>
+
+
+<script>
+  const toggle = document.getElementById('theme-toggle');
+  toggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+  });
+</script>
