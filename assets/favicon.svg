@@ -1,18 +1,29 @@
 <svg class="typst-doc" viewBox="0 0 60 60" width="60pt" height="60pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:h5="http://www.w3.org/1999/xhtml">
+	<style>
+		path {
+		  fill: black;
+		}
+
+		@media (prefers-color-scheme: dark) {
+		  path {
+			fill: white;
+		  }
+		}
+	  </style>
     <g>
         <g transform="translate(8.324999999999998 37.5)">
             <g class="typst-text" transform="scale(1, -1)">
-                <use xlink:href="#g1E27D08AB0C09E1588289DD454BD0B5E" x="0" fill="#ffffff" fill-rule="nonzero"/>
+                <use xlink:href="#g1E27D08AB0C09E1588289DD454BD0B5E" x="0" fill-rule="nonzero"/>
             </g>
         </g>
         <g transform="translate(16.665 40.5)">
             <g class="typst-text" transform="scale(1, -1)">
-                <use xlink:href="#g970B77208DB69FC51169FE750181C6F2" x="0" fill="#ffffff" fill-rule="nonzero"/>
+                <use xlink:href="#g970B77208DB69FC51169FE750181C6F2" x="0" fill-rule="nonzero"/>
             </g>
         </g>
         <g transform="translate(40.005 37.5)">
             <g class="typst-text" transform="scale(1, -1)">
-                <use xlink:href="#g3927D220C7153D0D7C40D11B3B58E779" x="0" fill="#ffffff" fill-rule="nonzero"/>
+                <use xlink:href="#g3927D220C7153D0D7C40D11B3B58E779" x="0" fill-rule="nonzero"/>
             </g>
         </g>
     </g>
