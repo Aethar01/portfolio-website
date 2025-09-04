@@ -29,7 +29,7 @@ body.dark .logo {
     }
 
     to {
-        background-position: 100% 100%;
+        background-position: -3427.024px 1132.812px;
     }
 }
 
@@ -44,6 +44,8 @@ body::before {
     z-index: -1;
     background-color: #ffffff;
     background-image: url("assets/background.svg");
+	/* background-size: 3427.024px 566.406px; */
+	background-size: 1713.512px 283.203px;
     animation: backgroundScroll 120s linear infinite;
 	transition: filter 0.3s;
 }
