@@ -1,130 +1,150 @@
+:root {
+    --paper: #ffffff;
+    --ink: #000000;
+    --accent: #0366d6;
+    --rule: rgba(0, 0, 0, 0.35);
+    --invert: none;
+    color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+    --paper: #000000;
+    --ink: #e8e8e8;
+    --accent: #58a6ff;
+    --rule: rgba(255, 255, 255, 0.4);
+    --invert: invert(1);
+    color-scheme: dark;
+}
+
 body {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-family: "STIX Two Text", "STIX Two", "Times New Roman", serif;
+    font-size: 1.125rem;
+    line-height: 1.5;
+    color: var(--ink);
     max-width: 1000px;
     margin: 0 auto;
-    line-height: 1.4;
-    text-align: center;
+    padding: 16px;
+    box-sizing: border-box;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    position: relative;
-    overflow: hidden;
-    background-image: none;
+    text-align: center;
 }
 
-.logo {
-    width: 100%;
-	transition: filter 0.3s;
-}
-
-body.dark .logo {
-	filter: invert(1);
-}
-
-
+/* Equation wallpaper. Scrolls by exactly a whole number of tiles (2 across, 4 down),
+   so the loop is seamless; moved with transform so it runs on the compositor. */
 @keyframes backgroundScroll {
     from {
-        background-position: 0 0;
+        transform: translate(0, 0);
     }
 
     to {
-        background-position: -3427.024px 1132.812px;
+        transform: translate(-3427.024px, 1132.812px);
     }
 }
-
 
 body::before {
     content: "";
     position: fixed;
-    top: 0;
+    top: -1132.812px;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: calc(100% + 3427.024px);
+    height: calc(100% + 1132.812px);
     z-index: -1;
     background-color: #ffffff;
     background-image: url("assets/background.svg");
-	/* background-size: 3427.024px 566.406px; */
-	background-size: 1713.512px 283.203px;
+    background-size: 1713.512px 283.203px;
     animation: backgroundScroll 120s linear infinite;
-	transition: filter 0.3s;
+    will-change: transform;
+    filter: var(--invert);
 }
 
-body.dark::before {
-	filter: invert(1);
+/* Clears the wallpaper behind the content so the name and links read cleanly. */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(ellipse 40rem 25rem at center, var(--paper) 45%, transparent 100%);
+    pointer-events: none;
 }
 
-a {
-    color: #0366d6;
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.2s ease;
-}
-
-a:hover {
-    color: #0056b3;
-    text-decoration: underline;
-}
-
-
-@media (max-width: 600px) {
-    .logo-container {
-        max-width: 250px;
+@media (prefers-reduced-motion: reduce) {
+    body::before {
+        animation: none;
     }
 }
 
-.header {
-	transition: filter 0.3s;
+h1 {
+    font-size: clamp(2.5rem, 9vw, 4rem);
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.6em;
 }
 
-body.dark .header {
-	filter: invert(1);
+a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--rule);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.22em;
+    transition: color 0.15s, text-decoration-color 0.15s;
 }
 
-.linker {
-    grid-template-rows: repeat(1, minmax(0, 1fr));
-    display: grid;
-	transition: filter 0.3s;
+a:hover {
+    color: var(--accent);
+    text-decoration-color: currentColor;
 }
 
-body.dark .linker {
-	filter: invert(1);
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
 }
 
-.pyramid {
-    display: grid;
-    grid-template-rows: repeat(1, minmax(0, 1fr));
-    padding: 10px;
-	transition: filter 0.3s;
+.links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.4em 1.6em;
+    font-size: 1.25rem;
 }
 
+.email {
+    display: inline-block;
+    margin-top: 0.5em;
+    font-style: italic;
+}
 
-body.dark .pyramid {
-	filter: invert(1);
+.logo {
+    display: block;
+    width: min(100%, 22rem);
+    height: auto;
+    margin: 2.25rem auto 0;
+    filter: var(--invert);
 }
 
 #theme-toggle {
-	position: fixed;
-	bottom: 20px;
-	right: 20px;
-	padding: 7px 10px;
-	border: none;
-	border-radius: 8px;
-	background: #0366d6;
-	color: #fff;
-	font-size: 18px;
-	cursor: pointer;
-	box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-	transition: background 0.3s, transform 0.2s, filter 0.3s;
-	z-index: 1000;     /* make sure it's on top */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    border: 1px solid var(--rule);
+    border-radius: 50%;
+    background: var(--paper);
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: border-color 0.15s, transform 0.15s;
+    z-index: 1000;
 }
 
 #theme-toggle:hover {
-	background: #0056b3;
-	transform: scale(1.1);
-}
-
-body.dark #theme-toggle {
-	filter: invert(1);
-	color: #000;
+    border-color: var(--ink);
+    transform: rotate(180deg);
 }
